@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>product-detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button  routerDirection="backward" ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding *ngIf="product">
+  <ion-grid>
+      <ion-row align-items-start>
+        <ion-col col-12 col-lg-6>
+          <ion-card  >
+            <img src="{{baseURL + product.image}}"/>
+            <ion-card-content>
+              <ion-card-title>
+                {{product.name | uppercase}}
+              </ion-card-title>
+              <p>
+                {{product.description}}
+              </p>
+            </ion-card-content>
+            
+          </ion-card>
+
+          <div [hidden]="product || errMess">
+            <ion-spinner></ion-spinner>
+            <h4>Loading . . . Please Wait</h4>
+          </div>
+          <div *ngIf="errMess">
+            <h2>Error</h2>
+            <h4>{{errMess}}</h4>
+          </div>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+
+  <ion-fab  vertical="bottom" horizontal="end" slot="fixed" [hidden]="favorite">
+    <ion-fab-button ion-fab (click)="AddToPanier(product.id)">
+      <ion-icon name="cart"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+

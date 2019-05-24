@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Categories
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding class="card-background-page">
+
+  <ion-grid>
+      <ion-row>
+        <ion-col col-12 col-lg-4 *ngFor="let dish of categories" >
+          <ion-card (pan)="addToFavorites(dish)" [routerLink]="['/tabs/tab1/products', dish.id]" routerLinkActive="router-link-active"  >
+            <img src="{{baseURL + dish.image}}"/>
+            <div class="card-title">{{dish.name}}</div>
+            
+          </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>  
+      <div [hidden]="categories || errMess">
+        <ion-spinner></ion-spinner>
+        <h4>Loading . . . Please Wait</h4>
+      </div>
+      <div *ngIf="errMess">
+        <h2>Error</h2>
+        <h4>{{errMess}}</h4>
+      </div>
+
+</ion-content>
