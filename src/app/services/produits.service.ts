@@ -13,16 +13,16 @@ export class ProduitsService {
 
   getAllProducts():Observable<any> {
   
-    return this.http.get(baseURL + 'dishes');
+    return this.http.get(baseURL + 'produits');
   }
   
   getProductsWithIdCategorie(IdCategorie: String):Observable<any> {
   
-    return this.http.get(baseURL + `dishes?catid=${IdCategorie}`);
+    return this.http.get(baseURL + `produits/categorie/${IdCategorie}`);
   }
   
   getProduct(id):Observable<any> {
   
-    return this.http.get(baseURL + 'dishes/' + id);
+    return this.http.get(baseURL + 'produits/' + id);
   }
 }

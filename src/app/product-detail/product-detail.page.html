@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>product-detail</ion-title>
+    <ion-title>Detail produit</ion-title>
     <ion-buttons slot="start">
       <ion-back-button  routerDirection="backward" ></ion-back-button>
     </ion-buttons>
@@ -12,7 +12,7 @@
       <ion-row align-items-start>
         <ion-col col-12 col-lg-6>
           <ion-card  >
-            <img src="{{baseURL + product.image}}"/>
+            <img  src="{{baseURL + product.Photo.emplacement}}" alt={{product.nom}}>
             <ion-card-content>
               <ion-card-title>
                 {{product.name | uppercase}}
@@ -37,7 +37,7 @@
   </ion-grid>
 
   <ion-fab  vertical="bottom" horizontal="end" slot="fixed" [hidden]="favorite">
-    <ion-fab-button ion-fab (click)="AddToPanier(product.id)">
+    <ion-fab-button ion-fab (click)="AddQT(product.id_produit)">
       <ion-icon name="cart"></ion-icon>
     </ion-fab-button>
   </ion-fab>

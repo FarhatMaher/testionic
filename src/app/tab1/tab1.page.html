@@ -11,10 +11,11 @@
 
   <ion-grid>
       <ion-row>
-        <ion-col col-12 col-lg-4 *ngFor="let dish of categories" >
-          <ion-card (pan)="addToFavorites(dish)" [routerLink]="['/tabs/tab1/products', dish.id]" routerLinkActive="router-link-active"  >
-            <img src="{{baseURL + dish.image}}"/>
-            <div class="card-title">{{dish.name}}</div>
+        <ion-col col-12 col-lg-4 *ngFor="let categorie of categories" >
+          <ion-card (pan)="addToFavorites(categorie)" [routerLink]="['/tabs/tab1/products', categorie.id_catalogie]" routerLinkActive="router-link-active"  >
+            <img  src="{{baseURL + categorie.Photo.emplacement}}" alt={{categorie.nom}}>
+
+            <div class="card-title">{{categorie.name}}</div>
             
           </ion-card>
     </ion-col>

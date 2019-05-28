@@ -27,9 +27,7 @@ export class ProdutsPage implements OnInit {
     handel(products) {
       this.products = <any> products
   
-      this.categoriesService.getCat(this.categorieId).subscribe(
-        categorie => {this.categorie = categorie ; console.log(categorie)}
-      )
+  
     }
 
 }

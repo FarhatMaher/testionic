@@ -19,16 +19,12 @@ constructor(private storage: Storage, private panierService: PanierService) {
 ngOnInit() {
 
 
-  this.storage.get('products').then(products => {
-    if (products) {
-      
-      this.nbr = products.length
-
-    } else { 
-      this.nbr= 0 ;
-              
-      console.log('products not defined'); }
-  });
+  if (localStorage.getItem("products")) {
+    this.nbr = JSON.parse(localStorage.getItem("products")).length;
+    }
+    this.panierService.getPanier().subscribe(
+      nbr => this.nbr = nbr
+    )
 
 
   this.panierService.getPanier().subscribe(
@@ -36,4 +32,14 @@ ngOnInit() {
   )
 
 }
+
+NotifyShop() {
+
+  
+
+ 
+
+}
+
+
 }

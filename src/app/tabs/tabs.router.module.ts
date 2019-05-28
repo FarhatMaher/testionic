@@ -14,8 +14,9 @@ const routes: Routes = [
             path: '',
             loadChildren: '../tab1/tab1.module#Tab1PageModule'
           } ,
-          { path: 'products/:catid', loadChildren: './produts/produts.module#ProdutsPageModule' },
-         { path: 'productdetail/:id', loadChildren: './product-detail/product-detail.module#ProductDetailPageModule' }
+          { path: 'products/:catid', loadChildren: '../produts/produts.module#ProdutsPageModule' },
+         { path: 'productdetail/:id', loadChildren: '../product-detail/product-detail.module#ProductDetailPageModule' },
+         { path: 'shop-list', loadChildren: '../shop-list/shop-list.module#ShopListPageModule' },
         ]
       },
       {
@@ -42,12 +43,7 @@ const routes: Routes = [
         pathMatch: 'full'
       }
     ]
-  },
-  {
-    path: '',
-    redirectTo: '/tabs/tab1',
-    pathMatch: 'full'
-  } 
+  }
   
 ];
 

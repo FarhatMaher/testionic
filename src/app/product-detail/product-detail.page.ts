@@ -14,6 +14,7 @@ import { PanierService } from '../services/panier.service';
 export class ProductDetailPage  implements OnInit { 
     product ;
     categorie= null ;
+    id_qt ;
     constructor(private productService: ProduitsService, private route: ActivatedRoute, @Inject('baseURL') public baseURL
     , private panierService: PanierService, private categoriesService: CategoriesService) { }
     
@@ -29,15 +30,22 @@ export class ProductDetailPage  implements OnInit {
     
       this.product = product ;
     
-      this.categoriesService.getCat(product.id).subscribe(
-        categorie => {this.categorie = categorie ; console.log(categorie)}
-      )
+  
     }
     
-    AddToPanier(id) {
-    
-      this.panierService.setItem(id);
+    AddToPanier(product) {
+
+      this.panierService.setItem(product);
     }
     
+    AddQT(id) {
+    
+    let QT = {"id_produit" : id , "quantite_produit" : 1 }
+    console.log(QT);
+      this.panierService.AjouterQuantiteProduit(QT).subscribe(qt =>{ 
+        
+        this.id_qt = <any> qt.id_qt ; this.AddToPanier(this.id_qt), console.log(qt)}
+        ) ;
+    }
     }
     

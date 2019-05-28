@@ -1,9 +1,62 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Votre Panier
+    Votre Panier
     </ion-title>
   </ion-toolbar>
+  Total : {{total}}
+  <a  (click)="AddPanier()">passer commande</a>
+ 
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content padding>
+
+  <div *ngIf="shops">
+    <ion-list >
+      <ion-item-sliding *ngFor="let shop of shops" #item>
+        
+        <ion-item slot="start">
+             <ion-thumbnail slot="start" >
+              <img src="{{baseURL + shop.Produit.Photo.emplacement}}"  alt={{shop.name}}>
+
+             </ion-thumbnail>
+              <ion-label >
+                <h3>{{ shop.Produit.nom }}</h3>
+                <p>
+                  {{shop.Produit.description}}
+                  {{shop.Produit.prix}}
+                </p>
+              </ion-label>
+        
+              <ion-select  slot="end" [(ngModel)]="shop.quantite_produit" (ionChange)="UpdateQT(shop.id_qt, shop.quantite_produit)"
+               required>
+                <ion-select-option *ngFor="let q of quantite" 
+                [value]="q.value" >
+                  {{q.viewValue}}
+                </ion-select-option>
+              </ion-select>
+            
+          </ion-item>
+        
+      
+        <ion-item-options side="end" >
+          <ion-item-option color="danger" (click)="deletePanier(shop.id_qt)">
+       
+            <ion-icon name="trash"></ion-icon>
+  
+        </ion-item-option>
+        </ion-item-options>
+       
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+
+  <div [hidden]="shops || errMess">
+    <ion-spinner></ion-spinner>
+    <h4>Loading . . . Please Wait</h4>
+  </div>
+  <div *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{ errMess }}</h4>
+  </div>
+</ion-content>

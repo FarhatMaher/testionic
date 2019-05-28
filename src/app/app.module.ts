@@ -12,12 +12,15 @@ import { baseURL } from 'src/shared/baseURL';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { LoginPage } from './login/login.page';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, LoginPage],
+  entryComponents: [LoginPage],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, 
-    IonicStorageModule.forRoot() ,
+    IonicStorageModule.forRoot() , FormsModule, ReactiveFormsModule,
 
   HttpClientModule],
   providers: [
